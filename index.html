@@ -6,9 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <script type='text/template' id='recipe-template'>
+            <li><%= name %></li>
+        </script>
+        <div id="header">
+            <h1>My Recipe App</h1>
+        </div>
+        <div id="container"></div>
+        <div id="footer">
+            <hr>
+            <p>2014</p>
+        </div>
         <script src="app/bower_components/zepto/zepto.min.js"></script>
         <script src="app/bower_components/underscore/underscore.js"></script>
         <script src="app/bower_components/backbone/backbone.js"></script>
         <script src="app/bower_components/backbone-nested-model/backbone-nested.js"></script>
+        <script src="js/models/recipe.js"></script>
+        <script src="js/collections/recipes.js"></script>
+        <script src="js/views/app.js"></script>
+        <script src="js/views/recipes.js"></script>
+        <!-- <script src="js/routers/router.js"></script> -->
     </body>
 </html>
