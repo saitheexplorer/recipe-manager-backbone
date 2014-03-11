@@ -1,0 +1,22 @@
+{
+  "name": "y",
+  "version": "y",
+  "homepage": "https://github.com/sgunturi/recipe-manager",
+  "authors": [
+    "Sai Gunturi <sai@nectarom.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone-nested-model": "~2.0.0",
+    "zepto": "~1.1.3"
+  }
+}
