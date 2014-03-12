@@ -11,7 +11,7 @@ app.models.Recipe = Backbone.NestedModel.extend({
 
     initialize: function () {
         var self = this;
-        if (this.get('steps').length < 4) self.set('difficulty', 'easy');
+        if ((this.get('steps').length + this.get('ingredients').length) < 8) self.set('difficulty', 'easy');
         else self.set('difficulty', 'hard');
     }
 });

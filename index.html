@@ -5,6 +5,19 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+    <style type="text/css">
+        .details {
+            display: none;
+        }
+
+        .hard {
+            color: red;
+        }
+
+        .easy {
+            color: green;
+        }
+    </style>
     <body>
         <div id="wrapper">
             <h1>My Recipe App</h1>
@@ -17,7 +30,20 @@
         </div>
 
         <script type='text/template' id='recipe-list-element'>
-            <a href='#'><%= name %></a>
+            <span class="title"><%= name %></span>
+            <div class="details">
+                <br>
+                Ingredients <br>
+                <ul>
+                    <% _.each(ingredients, function (ingr) { %><li><%= ingr %></li> <% }); %>
+                </ul>
+                <br>
+                Steps <br>
+                <ul>
+                    <% _.each(steps, function (step) { %><li><%= step %></li> <% }); %>
+                </ul>
+                <br>
+            </div>
         </script>
 
         <script type="text/template" id='add-recipe-form'>
