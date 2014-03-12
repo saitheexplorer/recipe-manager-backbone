@@ -1,4 +1,4 @@
-app = app || {};
+var app = app || {};
 
 app.views.Recipe = Backbone.View.extend({
     tagName: 'li',
