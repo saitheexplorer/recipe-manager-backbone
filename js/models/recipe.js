@@ -20,7 +20,7 @@ app.collections.Cookbook = Backbone.Collection.extend({
     model: app.models.Recipe,
 
     comparator: function (recipe) {
-        return recipe.get('name');
+        return recipe.get('name').toLowerCase();
     }
 });
 
