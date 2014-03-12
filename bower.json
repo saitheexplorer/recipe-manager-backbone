@@ -10,12 +10,12 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "app/bower_components",
+    "js/lib",
     "test",
     "tests"
   ],
   "dependencies": {
+    "backbone": "~1.1.2",
     "backbone-nested-model": "~2.0.0",
     "zepto": "~1.1.3"
   }
