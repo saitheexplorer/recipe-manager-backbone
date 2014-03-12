@@ -6,25 +6,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <script type='text/template' id='recipe-template'>
-            <li><%= name %></li>
-        </script>
-        <div id="header">
+        <div id="wrapper">
             <h1>My Recipe App</h1>
+            <div class="tools">
+                Search:<br>
+                <input type="text" id="search" />
+                <div id="count"></div>
+            </div>
+            <ul id="recipes_ul"></ul>
         </div>
-        <div id="container"></div>
-        <div id="footer">
-            <hr>
-            <p>2014</p>
-        </div>
-        <script src="app/bower_components/zepto/zepto.min.js"></script>
-        <script src="app/bower_components/underscore/underscore.js"></script>
-        <script src="app/bower_components/backbone/backbone.js"></script>
-        <script src="app/bower_components/backbone-nested-model/backbone-nested.js"></script>
+
+        <script type='text/template' id='recipe-list-element'>
+            <a href='#'><%= name %></a>
+        </script>
+
+        <script type="text/template" id='add-recipe-form'>
+            <form id="new-recipe">
+                <label>Name</label><input id="recipe-name" name="recipe-name" type="text"/>
+            </form>
+        </script>
+
+        <script src="js/data.json"></script>
+        <script src="js/lib/zepto/zepto.min.js"></script>
+        <script src="js/lib/underscore/underscore.js"></script>
+        <script src="js/lib/backbone/backbone.js"></script>
+        <script src="js/lib/backbone-nested-model/backbone-nested.js"></script>
+        <script src="js/routers/router.js"></script>
         <script src="js/models/recipe.js"></script>
-        <script src="js/collections/recipes.js"></script>
-        <script src="js/views/app.js"></script>
-        <script src="js/views/recipes.js"></script>
-        <!-- <script src="js/routers/router.js"></script> -->
+        <script src="js/views/recipe.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
