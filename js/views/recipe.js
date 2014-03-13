@@ -32,6 +32,7 @@ app.views.Cookbook = Backbone.View.extend({
         _.each(this.collection.models, function (recipe) {
             self.renderRecipe(recipe);
         }, this);
+        $('#count').html(this.collection.models.length + ' results');
         return this;
     },
 

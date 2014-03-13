@@ -15,16 +15,40 @@
         .easy {
             color: green;
         }
+
+        .spacer {
+            padding-top: 30px;
+        }
+
+        #count {
+            text-align: center;
+        }
+
+        #recipes_ul {
+            text-align: center;
+            list-style-type: none;
+        }
     </style>
     <body>
-        <h1>My Recipe App</h1>
-        <div id="wrapper"></div>
+        <div class="row">
+            <div class="small-10 small-centered columns">
+                <h1>My Recipe App</h1>
+                <div id="wrapper"></div>
+            </div>
+        </div>
 
         <script type="text/template" id='index-tools'>
-            Search:<br>
-            <input type="text" id="search" />
-            <div id="count"></div>
-            <ul id="recipes_ul"></ul>
+            <div class="row spacer">
+                <div class="small-8 small-centered columns">
+                    <input type="text" id="search" name="search" placeholder='Search'/>
+                </div>
+            </div>
+            <div class="row">
+                <div id="count"></div>
+            </div>
+            <div class="row spacer">
+                <ul id="recipes_ul"></ul>
+            </div>
         </script>
 
         <script type='text/template' id='recipe-list-element'>
