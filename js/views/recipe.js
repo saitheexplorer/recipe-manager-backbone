@@ -3,25 +3,11 @@ var app = app || {};
 app.views.Recipe = Backbone.View.extend({
     tagName: 'li',
 
-    attributes: function () {
-        return {
-            class: 'recipe ' + this.model.get('difficulty')
-        };
-    },
-
-    events: {
-        'click .title': 'showDetails'
-    },
-
     template: _.template($('#recipe-list-element').html()),
 
     render: function () {
         this.$el.html(this.template(this.model.toJSON()));
         return this;
-    },
-
-    showDetails: function (e) {
-        $(e.target).siblings('.details').slideToggle('fast');
     }
 });
 
@@ -62,11 +48,61 @@ app.views.Cookbook = Backbone.View.extend({
     },
 
     filterBySearch: function () {
-        this.collection.reset(recipesData, {silent: true});
+        this.collection.reset(app.cookbook.models, {silent: true});
         var filterString = this.searchFilter;
         var filtered = _.filter(this.collection.models, function (item) {
             return item.get('name').toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
         });
         this.collection.reset(filtered);
+    }
+});
+
+app.views.RecipeDetail = Backbone.View.extend({
+    el: '#wrapper',
+
+    template: _.template($('#recipe-detail').html()),
+
+    initialize: function () {
+        this.render();
+    },
+
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    }
+});
+
+app.views.CreateRecipe = Backbone.View.extend({
+    el: '#wrapper',
+
+    template: _.template($('#create-recipe-form').html()),
+
+    events: {
+        'click #submit': 'submit'
+    },
+
+    initialize: function () {
+        this.render();
+    },
+
+    render: function () {
+        this.$el.html(this.template());
+        return this;
+    },
+
+    submit: function (e) {
+        e.preventDefault();
+
+        var recipe = new app.models.Recipe({
+            name: $('#recipe-name').val(),
+            ingredients: $('#recipe-ingredients').val().split('\n'),
+            steps: $('#recipe-steps').val().split('\n'),
+            id: app.cookbook.max(function (val) { return val.get('id'); }).get('id') + 1
+        });
+
+        app.cookbook.add(recipe);
+
+        var index = new app.views.Index();
+        var cookbook = new app.views.Cookbook(app.cookbook.models);
     }
 });
