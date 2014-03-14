@@ -17,7 +17,8 @@ app.routers.Router = Backbone.Router.extend({
     routes: {
         '': 'index',
         'create': 'createRecipe',
-        'recipe/:id': 'recipeDetail'
+        'recipe/:id': 'recipeDetail',
+        'edit/:id': 'editRecipe'
     },
 
     index: function () {
@@ -27,6 +28,12 @@ app.routers.Router = Backbone.Router.extend({
 
     createRecipe: function () {
         var form = new app.views.CreateRecipe();
+    },
+
+    editRecipe: function (id) {
+        var form = new app.views.EditRecipe({
+            model: app.cookbook.get(id)
+        });
     },
 
     recipeDetail: function (id) {

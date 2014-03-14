@@ -107,3 +107,38 @@ app.views.CreateRecipe = Backbone.View.extend({
         var cookbook = new app.views.Cookbook(app.cookbook.models);
     }
 });
+
+app.views.EditRecipe = Backbone.View.extend({
+    el: '#wrapper',
+
+    template: _.template($('#create-recipe-form').html()),
+
+    events: {
+        'click #submit': 'submit'
+    },
+
+    initialize: function (recipe) {
+        this.render();
+    },
+
+    render: function () {
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    },
+
+    submit: function (e) {
+        e.preventDefault();
+
+        // var recipe = new app.models.Recipe({
+        //     name: $('#recipe-name').val(),
+        //     ingredients: $('#recipe-ingredients').val().split('\n'),
+        //     steps: $('#recipe-steps').val().split('\n'),
+        //     id: app.cookbook.max(function (val) { return val.get('id'); }).get('id') + 1
+        // });
+
+        // app.cookbook.add(recipe);
+
+        // var index = new app.views.Index();
+        // var cookbook = new app.views.Cookbook(app.cookbook.models);
+    }
+});
