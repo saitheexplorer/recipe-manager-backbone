@@ -6,14 +6,11 @@ var app = {
     init: function () {
         app.cookbook = new app.collections.Cookbook(recipesData);
         app.router = new app.routers.Router();
+        Backbone.history.start();
     }
 };
 
 app.routers.Router = Backbone.Router.extend({
-    initialize: function () {
-        Backbone.history.start();
-    },
-
     routes: {
         '': 'index',
         'create': 'createRecipe',

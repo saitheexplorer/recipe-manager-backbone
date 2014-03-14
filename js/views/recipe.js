@@ -37,9 +37,7 @@ app.views.Cookbook = Backbone.View.extend({
     },
 
     renderRecipe: function (recipe) {
-        var newRecipe = new app.views.Recipe({
-            model: recipe
-        });
+        var newRecipe = new app.views.Recipe({ model: recipe });
         $('#recipes_ul').append(newRecipe.render().el);
     },
 
