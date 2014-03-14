@@ -8,6 +8,10 @@
         <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.1.1/css/foundation.min.css">
     </head>
     <style type="text/css">
+        textarea {
+            height: 200px;
+        }
+
         .hard {
             color: red;
         }
@@ -59,13 +63,15 @@
 
         <script type="text/template" id='create-recipe-form'>
             <form id="new-recipe">
-                <label>Title</label><input id="recipe-name" name="recipe-name" type="text"/>
+                <label>Title</label><input id="recipe-name" name="recipe-name" type="text" value='<%= name %>'/>
                 <br><br>
-                <label>Ingredients</label><textarea id="recipe-ingredients" name="recipe-ingredients" type="textarea"/>
+                <label>Ingredients</label>
+                <textarea id="recipe-ingredients" name="recipe-ingredients"><%= _.reduce(ingredients, function (memo, val) { return memo + val + '\n'; }, '') %></textarea>
                 <br><br>
-                <label>Steps</label><textarea id="recipe-steps" name="recipe-steps" type="textarea"/>
+                <label>Steps</label>
+                <textarea id="recipe-steps" name="recipe-steps"><%= _.reduce(steps, function (memo, val) { return memo + val + '\n'; }, '') %></textarea>
                 <br><br>
-                <button id='submit'>Create</button>
+                <button id='submit'>Save</button>
             </form>
         </script>
 
