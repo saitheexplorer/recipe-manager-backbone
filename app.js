@@ -1,20 +1,16 @@
-var restify = require('restify');
-var app = restify.createServer();
+var express = require('express');
+var path = require('path');
 
-app.get('/recipes', function (req, res, next) {
-    res.send([{
-        "_id": 81,
-        "name": "Stir-Fried Tofu And Cabbage With Ginger Recipe",
-        "ingredients": [],
-        "steps": []
-    }]);
+var app = express();
+var routes = require('./routes');
 
-    next();
-});
+app.set('views', __dirname);
+app.set('view engine', 'jade');
 
-app.get('/recipes/:id', function (req, res, next) {
-    res.send(req.params.id);
-    next();
-});
+app.get('/', routes.index);
+app.get('/recipes', routes.recipes.all);
+app.get('/recipes/:id', routes.recipes.one);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(8080);

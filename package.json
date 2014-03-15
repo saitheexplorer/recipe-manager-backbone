@@ -16,5 +16,7 @@
     "url": "https://github.com/sgunturi/recipe-manager/issues"
   },
   "homepage": "https://github.com/sgunturi/recipe-manager",
-  "dependencies": {}
+  "dependencies": {
+    "jade": "^1.3.0"
+  }
 }
