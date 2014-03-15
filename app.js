@@ -10,6 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 
+app.use(express.logger('dev'));
+
 app.get('/', routes.index);
 app.get('/recipes', routes.recipes.all);
 app.get('/recipes/:id', routes.recipes.one);

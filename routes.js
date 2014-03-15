@@ -27,7 +27,6 @@ module.exports = {
             db.recipes.findAndModify({
                 query: {_id: parseInt(req.body._id, 10)},
                 update: {$set: {
-                    name: req.body.name,
                     ingredients: req.body.ingredients,
                     steps: req.body.steps,
                     modified: new Date(),

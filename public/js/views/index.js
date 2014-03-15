@@ -14,12 +14,12 @@ app.views.Index = Backbone.View.extend({
     },
 
     initialize: function () {
-        $('#wrapper').empty();
         this.render();
+        var cookbook = new app.views.Cookbook(app.cookbook.models);
     },
 
     render: function () {
-        $('#wrapper').html(this.template());
+        $('#wrapper').prepend(this.template());
         return this;
     },
 
