@@ -1,0 +1,24 @@
+textarea {
+    height: 200px;
+}
+
+.hard {
+    color: red;
+}
+
+.easy {
+    color: green;
+}
+
+.spacer {
+    padding-top: 30px;
+}
+
+#count {
+    text-align: center;
+}
+
+#recipes_ul {
+    text-align: center;
+    list-style-type: none;
+}

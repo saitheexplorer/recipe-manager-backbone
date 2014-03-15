@@ -96,7 +96,7 @@ app.views.CreateRecipe = Backbone.View.extend({
             name: $('#recipe-name').val(),
             ingredients: $('#recipe-ingredients').val().split('\n'),
             steps: $('#recipe-steps').val().split('\n'),
-            id: app.cookbook.max(function (val) { return val.get('id'); }).get('id') + 1
+            _id: app.cookbook.max(function (val) { return val.get('_id'); }).get('_id') + 1
         });
 
         app.cookbook.add(recipe);
