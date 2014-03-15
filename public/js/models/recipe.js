@@ -11,6 +11,8 @@ app.models.Recipe = Backbone.NestedModel.extend({
 
     idAttribute: '_id',
 
+    urlRoot: '/recipes',
+
     initialize: function () {
         var self = this;
         if ((this.get('steps').length + this.get('ingredients').length) < 8) self.set('difficulty', 'easy');
@@ -20,6 +22,8 @@ app.models.Recipe = Backbone.NestedModel.extend({
 
 app.collections.Cookbook = Backbone.Collection.extend({
     model: app.models.Recipe,
+
+    url: '/books',
 
     comparator: function (recipe) {
         return recipe.get('name').toLowerCase();

@@ -19,7 +19,22 @@ module.exports = {
         one: function (req, res, next) {
             db.recipes.findOne({_id: parseInt(req.params.id, 10)}, function (error, recipe) {
                 if (error) return next(error);
-                console.log(recipe);
+                res.send(recipe);
+            });
+        },
+
+        save: function (req, res, next) {
+            db.recipes.findAndModify({
+                query: {_id: parseInt(req.body._id, 10)},
+                update: {$set: {
+                    name: req.body.name,
+                    ingredients: req.body.ingredients,
+                    steps: req.body.steps,
+                    modified: new Date(),
+                    tags: req.body.tags
+                }}
+            }, function (error, recipe) {
+                if (error) return next(error);
                 res.send(recipe);
             });
         }
