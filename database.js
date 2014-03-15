@@ -1,5 +1,1 @@
-var url = 'recipe-manager';
-var collections = ['recipes'];
-
-var db = require('mongojs').connect(url, collections);
-module.exports = db;
+module.exports = require('mongojs').connect('recipe-manager', ['recipes']);
