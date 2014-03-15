@@ -92,17 +92,17 @@ app.views.CreateRecipe = Backbone.View.extend({
     submit: function (e) {
         e.preventDefault();
 
-        var recipe = new app.models.Recipe({
+        var newRecipe = new app.models.Recipe({
             name: $('#recipe-name').val(),
             ingredients: $('#recipe-ingredients').val().split('\n'),
             steps: $('#recipe-steps').val().split('\n'),
             _id: app.cookbook.max(function (val) { return val.get('_id'); }).get('_id') + 1
         });
 
-        app.cookbook.add(recipe);
+        app.cookbook.add(newRecipe);
+        newRecipe.save();
 
-        var index = new app.views.Index();
-        var cookbook = new app.views.Cookbook(app.cookbook.models);
+        app.router.navigate('#', true);
     }
 });
 
@@ -127,16 +127,12 @@ app.views.EditRecipe = Backbone.View.extend({
     submit: function (e) {
         e.preventDefault();
 
-        // var recipe = new app.models.Recipe({
-        //     name: $('#recipe-name').val(),
-        //     ingredients: $('#recipe-ingredients').val().split('\n'),
-        //     steps: $('#recipe-steps').val().split('\n'),
-        //     id: app.cookbook.max(function (val) { return val.get('id'); }).get('id') + 1
-        // });
+        this.model.set({
+            name: $('#recipe-name').val(),
+            ingredients: $('#recipe-ingredients').val().split('\n'),
+            steps: $('#recipe-steps').val().split('\n')
+        }).save();
 
-        // app.cookbook.add(recipe);
-
-        // var index = new app.views.Index();
-        // var cookbook = new app.views.Cookbook(app.cookbook.models);
+        app.router.navigate('#', true);
     }
 });
