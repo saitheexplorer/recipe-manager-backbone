@@ -1,4 +1,5 @@
 var db = require('./database');
+var id = require('shortid');
 
 module.exports = {
     index: function (req, res, next) {
@@ -33,6 +34,14 @@ module.exports = {
                     tags: req.body.tags
                 }}
             }, function (error, recipe) {
+                if (error) return next(error);
+                res.send(recipe);
+            });
+        },
+
+        create: function (req, res, next) {
+            req.body._id = id();
+            db.recipes.insert(req.body, function (error, recipe) {
                 if (error) return next(error);
                 res.send(recipe);
             });
