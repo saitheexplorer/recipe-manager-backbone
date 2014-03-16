@@ -77,7 +77,7 @@ app.views.CreateRecipe = Backbone.View.extend({
     template: _.template($('#create-recipe-form').html()),
 
     events: {
-        'click #submit': 'submit'
+        'click #save': 'save'
     },
 
     initialize: function () {
@@ -85,21 +85,28 @@ app.views.CreateRecipe = Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template());
+        this.$el.html(this.template(new app.models.Recipe().toJSON()));
         return this;
     },
 
-    submit: function (e) {
+    save: function (e) {
         e.preventDefault();
 
-        app.cookbook.create({
+        var newRecipe = new app.models.Recipe({
             name: $('#recipe-name').val(),
             ingredients: $('#recipe-ingredients').val().split('\n'),
-            steps: $('#recipe-steps').val().split('\n'),
-            _id: (app.cookbook.max(function (val) { return val.get('_id'); }).get('_id') + 1).toString()
+            steps: $('#recipe-steps').val().split('\n')
         });
 
+        newRecipe.save();
+        app.cookbook.fetch();
+
+        this.$el.unbind();
+        this.$el.empty();
+
         app.router.navigate('#', true);
+
+        return false;
     }
 });
 
