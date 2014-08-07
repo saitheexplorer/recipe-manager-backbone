@@ -31,7 +31,7 @@ html(lang="en")
             |    </div>
 
         script#recipe-list-element(type='text/template')
-            |    <a href='#/recipe/<%= _id %>'>
+            |    <a href='#/recipe/<%= id %>'>
             |        <span class="title"><%= name %></span> <span class='<%= difficulty %>'>(<%= difficulty %>)</span>
             |    </a>
 
@@ -50,7 +50,7 @@ html(lang="en")
 
         script#recipe-detail(type='text/template')
             |    <h2><%= name %></h2>
-            |    <a href='#/edit/<%= _id %>'>Edit...</a>
+            |    <a href='#/edit/<%= id %>'>Edit...</a>
             |    <div class="details">
             |        <br>
             |        Ingredients <br>
@@ -74,5 +74,3 @@ html(lang="en")
         script(src='js/views/index.js')
         script(src='js/views/recipe.js')
         script(src='js/app.js')
-
-

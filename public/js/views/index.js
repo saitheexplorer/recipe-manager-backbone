@@ -19,7 +19,7 @@ app.views.Index = Backbone.View.extend({
     },
 
     render: function () {
-        $('#wrapper').prepend(this.template());
+        $('#wrapper').html(this.template());
         return this;
     },
 

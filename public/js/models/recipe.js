@@ -9,7 +9,7 @@ app.models.Recipe = Backbone.NestedModel.extend({
         tags: [],
     },
 
-    idAttribute: '_id',
+    idAttribute: 'id',
 
     urlRoot: '/recipes',
 
@@ -37,5 +37,3 @@ app.collections.Cookbook = Backbone.Collection.extend({
         return recipe.get('name').toLowerCase();
     }
 });
-
-

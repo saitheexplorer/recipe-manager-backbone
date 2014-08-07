@@ -7,7 +7,6 @@ var app = {
         app.cookbook = new app.collections.Cookbook(recipesData);
         app.router = new app.routers.Router();
         Backbone.history.start();
-
         $('h1').on('click', function () {
             app.router.navigate('#', {trigger: true});
         });
@@ -18,8 +17,8 @@ app.routers.Router = Backbone.Router.extend({
     routes: {
         '': 'index',
         'create': 'createRecipe',
-        'recipe/:_id': 'recipeDetail',
-        'edit/:_id': 'editRecipe'
+        'recipe/:id': 'recipeDetail',
+        'edit/:id': 'editRecipe'
     },
 
     index: function () {
@@ -30,15 +29,15 @@ app.routers.Router = Backbone.Router.extend({
         var form = new app.views.CreateRecipe();
     },
 
-    editRecipe: function (_id) {
+    editRecipe: function (id) {
         new app.views.EditRecipe({
-            model: app.cookbook.get(_id)
+            model: app.cookbook.get(id)
         });
     },
 
-    recipeDetail: function (_id) {
+    recipeDetail: function (id) {
         new app.views.RecipeDetail({
-            model: app.cookbook.get(_id)
+            model: app.cookbook.get(id)
         });
     }
 });

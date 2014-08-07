@@ -8,6 +8,7 @@ app.set('views', __dirname);
 app.set('view engine', 'jade');
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.bodyParser());
 app.use(express.methodOverride());
 
 app.use(express.logger('dev'));
