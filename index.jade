@@ -45,7 +45,7 @@ html(lang="en")
                 <label>Steps</label>
                 <textarea id="recipe-steps" name="recipe-steps"><%= _.reduce(steps, function (memo, val) { return memo + val + '\n'; }, '') %></textarea>
                 <br><br>
-                <button id='save'>Save</button>
+                <button id='save' class='button radius'>Save</button>
             </form>
 
         script#recipe-detail(type='text/template').
@@ -53,12 +53,16 @@ html(lang="en")
             <a href='#/edit/<%= id %>'>Edit...</a>
             <div class="details">
                 <br>
-                Ingredients <br>
+                <strong>Ingredients</strong>
+                <br>
+                <br>
                 <ul>
                     <% _.each(ingredients, function (ingr) { %><li><%= ingr %></li> <% }); %>
                 </ul>
                 <br>
-                Steps <br>
+                <strong>Steps</strong>
+                <br>
+                <br>
                 <ol>
                     <% _.each(steps, function (step) { %><li><%= step %></li> <% }); %>
                 </ol>
